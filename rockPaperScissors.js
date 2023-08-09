@@ -1,44 +1,41 @@
+const getComputerChoice = () => {
+    const computerChoices = ['rock', 'paper', 'scissors'];
+    const randomNumber = Math.floor(Math.random() * computerChoices.length);
+    return computerChoices[randomNumber];
+}
+    let playerWins = 0;
+    let computerWins= 0;
+    let fiveResult = '';
 const playRound = (playerSelection, computerSelection) => {
-    
-    let roundResult;
+     
     playerSelection = playerSelection.toLowerCase();
-
-    if (playerSelection === computerSelection){
-        roundResult = `Tie! Go again ?`
-    } else if (playerSelection === 'rock' && computerSelection === 'paper'){
-        roundResult = `You Lose! ${computerSelection} beats ${playerSelection}`
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors'){
-        roundResult=`You won! ${playerSelection} beats ${computerSelection}`
-
-    } else if (playerSelection === 'paper' && computerSelection === 'rock'){
-        roundResult = `You won! ${playerSelection} beats ${computerSelection}`
-
-    } else if (playerSelection === 'paper' && computerSelection === 'scissors'){
-        roundResult = `You lose! ${computerSelection} beats ${playerSelection}`
-
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
-        roundResult = `You won! ${playerSelection} beats ${computerSelection}`
-
-    } else if (playerSelection === 'scissors' && computerSelection === 'rock'){
-        roundResult = `You lose! ${computerSelection} beats ${playerSelection}`
+    if (playerWins > computerWins){fiveResult=`You WON!Well don!`}else if (playerWins<computerWins){
+        fiveResult = `You are a lame computer won...`
+    } else fiveResult = `It's a tie try again!?`
+    if (playerSelection === computerSelection) {
+        return `It's a tie!`;
     }
-
-    // console.log(`Player : ${playerSelection}, Computer : ${computerSelection}`);
-    console.log(roundResult);
-  }
-
-//   console.log(playRound(playerSelection, computerSelection));   
-  
-const game = () => {
-    for (let i=1; i<=5; i++){
-        const getComputerChoice = () => {
-            const arrayOfChoices = ['rock', 'paper', 'scissors']
-            let random = Math.floor(Math.random()*arrayOfChoices.length);
-            return arrayOfChoices[random];
-        }    
-        const playerSelection = prompt("Rock , Paper , Scissors", "");
-        const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
+    if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+    ) {
+        playerWins++
+        return `You win! ${playerSelection} beats ${computerSelection}`;
+    } else {
+        computerWins++
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
-game();
+
+const game = () => {
+    const playerSelection = prompt('Enter your choice: rock, paper, or scissors');
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+}
+for (let i = 0; i < 5; i++) {
+    game();
+    if(i === 4) {
+        console.log(fiveResult);
+    } 
+}
