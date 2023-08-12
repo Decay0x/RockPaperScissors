@@ -1,0 +1,28 @@
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+}
+.container{
+    border: 1px solid red;
+    display: flex;
+    align-items:center;
+    gap: 3rem;
+    justify-content: center;
+    margin: 5rem auto;
+    max-width: fit-content;
+
+}
+.container > button {
+    border:none;
+    border-radius: 0.15rem;
+    background-color: red;
+    padding: 0.25rem;
+    color: #fff;
+}
+.container > button:hover{
+    cursor: pointer;
+}

@@ -1,3 +1,13 @@
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
+const roundResult = document.createElement('p')
+const divContainer = document.querySelector('.container') 
+const divResult = document.createElement('div');
+
+const playerSelection = () => {
+    return this;
+}
 const getComputerChoice = () => {
     const computerChoices = ['rock', 'paper', 'scissors'];
     const randomNumber = Math.floor(Math.random() * computerChoices.length);
@@ -7,35 +17,33 @@ const getComputerChoice = () => {
     let computerWins= 0;
     let fiveResult = '';
 const playRound = (playerSelection, computerSelection) => {
-     
-    playerSelection = playerSelection.toLowerCase();
+    
+    playerSelection = playerSelection.target.id
+    document.body.after(divContainer,divResult)
+    divResult.appendChild(roundResult);
+    computerSelection = getComputerChoice();
+    if(!playerSelection){
+         console.log(playerSelection);
+        return;
+     }
     if (playerWins > computerWins){fiveResult=`You WON!Well don!`}else if (playerWins<computerWins){
         fiveResult = `You are a lame computer won...`
     } else fiveResult = `It's a tie try again!?`
     if (playerSelection === computerSelection) {
-        return `It's a tie!`;
+        return roundResult.textContent = `It's a tie!`;
     }
     if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
-    ) {
-        playerWins++
-        return `You win! ${playerSelection} beats ${computerSelection}`;
-    } else {
-        computerWins++
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        ) {
+            playerWins++
+            return roundResult.textContent =`You win! ${playerSelection} beats ${computerSelection}`;
+        } else {
+            computerWins++
+            return roundResult.textContent =`You lose! ${computerSelection} beats ${playerSelection}`;
+        }
     }
-}
-
-const game = () => {
-    const playerSelection = prompt('Enter your choice: rock, paper, or scissors');
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-}
-for (let i = 0; i < 5; i++) {
-    game();
-    if(i === 4) {
-        console.log(fiveResult);
-    } 
-}
+    
+const allBtns = document.querySelector('.container');
+allBtns.addEventListener('click', playRound)
