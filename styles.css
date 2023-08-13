@@ -2,12 +2,12 @@
     box-sizing:border-box;
     margin: 0;
     padding: 0;
+    font-family:fantasy;
 }
 body{
     width: 100%;
 }
 .container{
-    border: 1px solid red;
     display: flex;
     align-items:center;
     gap: 3rem;
@@ -19,10 +19,19 @@ body{
 .container > button {
     border:none;
     border-radius: 0.15rem;
-    background-color: red;
     padding: 0.25rem;
     color: #fff;
+    font-size: 2rem;
 }
 .container > button:hover{
     cursor: pointer;
+}
+#rock{
+    background-color:black;
+}
+#paper{
+    background-color: burlywood;
+}
+#scissors{
+    background-color: darkred;
 }
