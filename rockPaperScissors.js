@@ -39,9 +39,6 @@ const playRound = (playerSelection, computerSelection) => {
                 gamesPlayed=0;
                 playerWins > computerWins ? resultDisplay.textContent = `You won but... I'LL BE BACK!` :
                 resultDisplay.textContent = `You lost Skynet is being deployed...`
-                setTimeout(()=>{
-                    divResult.removeChild(resultDisplay);
-                },3000)
             }
     }
     
