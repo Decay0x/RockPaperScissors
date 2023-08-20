@@ -24,7 +24,10 @@ const playRound = (playerSelection, computerSelection) => {
     computerSelection = getComputerChoice();
     divResult.appendChild(resultDisplay);
     
-    if (
+    if ( playerSelection === computerSelection){
+        resultDisplay.textContent = 'Its a tie!'
+    }
+    else if (
             (playerSelection === 'rock' && computerSelection === 'scissors') ||
             (playerSelection === 'paper' && computerSelection === 'rock') ||
             (playerSelection === 'scissors' && computerSelection === 'paper')
@@ -39,6 +42,8 @@ const playRound = (playerSelection, computerSelection) => {
                 gamesPlayed=0;
                 playerWins > computerWins ? resultDisplay.textContent = `You won but... I'LL BE BACK!` :
                 resultDisplay.textContent = `You lost Skynet is being deployed...`
+                playerWins = 0;
+                computerWins = 0;
             }
     }
     
